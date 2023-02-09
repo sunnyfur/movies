@@ -13,7 +13,7 @@ export const getListMovies = () => async (dispatch) => {
 export const getMovie = (id) => async (dispatch) => {
   try {
     dispatch(moviesActions.loadMovieStart);
-    const movie = await api.get(`/films/${id}`);
+    const movie = await api.get(`/films/${id}`).then((res) => res.data);
     dispatch(moviesActions.loadMovieEnd(movie));
   } catch (err) {
     dispatch(moviesActions.loadMovieError(err.message));
