@@ -19,3 +19,5 @@ export const getMovie = (id) => async (dispatch) => {
     dispatch(moviesActions.loadMovieError(err.message));
   }
 };
+
+export const getListMoviesPage = () => async (dispatch) => {};
