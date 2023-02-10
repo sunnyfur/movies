@@ -1,8 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+// const TOP_250_BEST_FILMS="Топ 250 фильмов";
 
 const initialState = {
   movies: [],
   movie: null,
+  pagesCount: 0,
+  currPage: 1,
+  header: "Топ 250 фильмов",
   isLoadingMovies: true,
   isLoadingMovie: true,
   serverError: null,
@@ -17,7 +21,8 @@ export const moviesSlice = createSlice({
     },
     loadMoviesEnd(state, action) {
       state.isLoadingMovies = false;
-      state.movies = action.payload;
+      state.movies = action.payload.movies;
+      state.pagesCount = action.payload.pagesCount;
     },
     loadMoviesError(state, action) {
       state.isLoadingMovies = false;

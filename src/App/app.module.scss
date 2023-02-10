@@ -1,0 +1,19 @@
+@import "./vars";
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.containerContent {
+  width: 1160px;
+  @media screen and (max-width: $desktop) {
+    width: calc(100% - 10rem);
+  }
+  @media screen and (max-width: $tablet) {
+    width: calc(100% - 6rem);
+  }
+  @media screen and (max-width: $mobile) {
+    width: calc(100% - 4rem);
+  }
+}

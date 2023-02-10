@@ -1,15 +1,24 @@
 import api from "./index";
 import { moviesActions } from "../store/reducers/moviesSlice";
 
-export const getListMovies = () => async (dispatch) => {
-  try {
-    dispatch(moviesActions.loadMoviesStart);
-    const movies = await api.get("/films/top").then((res) => res.data);
-    dispatch(moviesActions.loadMoviesEnd(movies.films));
-  } catch (err) {
-    dispatch(moviesActions.loadMoviesError(err.message));
-  }
-};
+export const getListMovies =
+  (page = 1) =>
+  async (dispatch) => {
+    try {
+      dispatch(moviesActions.loadMoviesStart);
+      const movies = await api.get(`/films/top/?page=${page}`).then((res) => {
+        return res.data;
+      });
+      dispatch(
+        moviesActions.loadMoviesEnd({
+          movies: movies.films,
+          pagesCount: movies.pagesCount,
+        })
+      );
+    } catch (err) {
+      dispatch(moviesActions.loadMoviesError(err.message));
+    }
+  };
 export const getMovie = (id) => async (dispatch) => {
   try {
     dispatch(moviesActions.loadMovieStart);

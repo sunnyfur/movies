@@ -1,0 +1,59 @@
+@import "../../App/vars";
+@import "../../App/colors";
+
+.movies {
+  gap: 2rem;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  @media screen and (max-width: $desktop) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media screen and (max-width: $tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media screen and (max-width: $mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+.movie {
+  border-radius: $border-radius-sm;
+  overflow: hidden;
+  position: relative;
+  &:hover {
+    .movieImg {
+      transform: scale(1.1);
+      filter: brightness(70%);
+    }
+    .movieDescription {
+      transform: translateY(-70%);
+    }
+  }
+}
+.movieImg {
+  object-fit: cover;
+  transition: 0.5s ease-in-out;
+  width: 100%;
+
+  z-index: 0;
+}
+.movieDescription {
+  position: absolute;
+  z-index: 2;
+  bottom: -80%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($card-color, 0.8);
+  transition: 1s ease-in-out;
+  transform: translateY(0);
+  padding: 1rem;
+}
+.movieRating {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  border-radius: 6px;
+  z-index: 2;
+  padding: 2px 5px;
+  background-color: $card-color;
+}
