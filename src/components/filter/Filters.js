@@ -26,20 +26,21 @@ const Filters = () => {
     dispatch(getFilmsFilters());
   }, []);
   useEffect(() => {
-    dispatch(getListMovies("films/top", 1, { type: typeTopSelect }));
+    dispatch(getListMovies("api/v2.2/films/top", 1, { type: typeTopSelect }));
   }, [typeTopSelect]);
   const handleChange = (e) => {
     setTypeFilter(e.target.dataset.type);
+    if (typeFilt.top === e.target.dataset.type)
+      dispatch(getListMovies("api/v2.2/films/top", 1, { type: typeTopSelect }));
   };
   const handleChangeTop = (e) => {
     setTypeTopSelect(e.target.value);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formInputs);
     if (typeFilter === typeFilt.words)
       dispatch(
-        getListMovies("films/search-by-keyword", 1, {
+        getListMovies("api/v2.1/films/search-by-keyword", 1, {
           keyword: formInputs.search,
         })
       );
@@ -48,7 +49,7 @@ const Filters = () => {
       if (formInputs.search) params.keyword = formInputs.search;
       if (formInputs.country) params.country = formInputs.country;
       if (formInputs.genre) params.genre = formInputs.genre;
-      dispatch(getListMovies("films", 1, params));
+      dispatch(getListMovies("api/v2.2/films", 1, params));
     }
     setFormInputs({ ...defaultForm });
   };

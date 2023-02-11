@@ -22,6 +22,7 @@ export const moviesSlice = createSlice({
       state.isLoadingMovies = true;
     },
     loadMoviesEnd(state, action) {
+      state.serverError = null;
       state.isLoadingMovies = false;
       state.movies = action.payload.movies;
       state.pagesCount = action.payload.pagesCount;

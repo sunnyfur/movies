@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getListMovies, nextPage, prevPage } from "../../api/moviesApi";
+import { nextPage, prevPage } from "../../api/moviesApi";
 import ErrorComponent from "../error/ErrorComponent";
 import Loader from "../loader/Loader";
-
 import MovieCard from "./MovieCard";
 import styles from "./movieList.module.scss";
 

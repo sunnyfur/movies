@@ -1,16 +1,13 @@
 import api from "./index";
 import { moviesActions } from "../store/reducers/moviesSlice";
 
-const moviesArr = require("../mock/films.json");
-const movieSample = require("../mock/film.json");
-const genresSample = require("../mock/genres.json");
 const combineStr = (path, params, page) => {
   const paramsStr = Object.keys(params).length
     ? `${Object.keys(params)
         .map((key) => `${key}=${params[key]}`)
         .join("&")}&`
     : "";
-  return path + `/?${paramsStr}page=${page}`;
+  return path + `?${paramsStr}page=${page}`;
 };
 
 export const getListMovies =
@@ -23,27 +20,22 @@ export const getListMovies =
       const movies = await api.get(`${pathStr}`).then((res) => {
         return res.data;
       });
+
+      const films = "films" in movies ? movies.films : movies.items;
+      const pages =
+        "pagesCount" in movies ? movies.pagesCount : movies.totalPages;
+
       dispatch(
         moviesActions.loadMoviesEnd({
           path: path,
-          movies: movies.films,
-          pagesCount: movies.pagesCount,
+          movies: films,
+          pagesCount: pages,
           pathParams: params,
           currPage: page,
         })
       );
     } catch (err) {
-      // dispatch(moviesActions.loadMoviesError(err.message));
-      console.log(pathStr);
-      dispatch(
-        moviesActions.loadMoviesEnd({
-          movies: moviesArr.films,
-          pagesCount: moviesArr.pagesCount,
-          currPage: page,
-          pathParams: params,
-          path: path,
-        })
-      );
+      dispatch(moviesActions.loadMoviesError(err.message));
     } finally {
       dispatch(refreshHeader());
     }
@@ -51,21 +43,21 @@ export const getListMovies =
 export const getMovie = (id) => async (dispatch) => {
   try {
     dispatch(moviesActions.loadMovieStart);
-    const movie = await api.get(`/films/${id}`).then((res) => res.data);
+    const movie = await api.get(`api/v2.2/films/${id}`).then((res) => res.data);
     dispatch(moviesActions.loadMovieEnd(movie));
   } catch (err) {
-    // dispatch(moviesActions.loadMovieError(err.message));
-    dispatch(moviesActions.loadMovieEnd(movieSample));
+    dispatch(moviesActions.loadMovieError(err.message));
   }
 };
 
 export const getFilmsFilters = () => async (dispatch) => {
   try {
-    const filters = await api.get(`/films/filters`).then((res) => res.data);
+    const filters = await api
+      .get(`api/v2.2/films/filters`)
+      .then((res) => res.data);
     dispatch(moviesActions.loadFiltersAll(filters));
   } catch (err) {
-    dispatch(moviesActions.loadFiltersAll(genresSample));
-    // dispatch(moviesActions.loadMovieError(err.message));
+    dispatch(moviesActions.loadMovieError(err.message));
   }
 };
 
@@ -80,7 +72,7 @@ export const prevPage = () => async (dispatch, getState) => {
 
 export const refreshHeader = () => async (dispatch, getState) => {
   const state = getState().movies;
-  console.log(state.pathParams);
+
   switch (state.pathParams.type) {
     case "TOP_250_BEST_FILMS":
       dispatch(moviesActions.setHeader("Топ 250 лучших фильмов"));
