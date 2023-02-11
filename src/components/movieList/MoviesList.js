@@ -1,35 +1,72 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { getListMovies } from "../../api/moviesApi";
+import ErrorComponent from "../error/ErrorComponent";
+import Loader from "../loader/Loader";
 
 import MovieCard from "./MovieCard";
 import styles from "./movieList.module.scss";
 
-const moviesArr = require("../../mock/films.json");
-
 const MoviesList = () => {
-  // const dispatch = useDispatch();
-  const { isLoadingMovies, header, serverError } = useSelector(
-    (state) => state.movies
-  );
-  const [movies, setMovies] = useState(moviesArr);
+  const { isLoadingMovies, movies, header, serverError, currPage, pagesCount } =
+    useSelector((state) => state.movies);
+  const [disPrev, setDisPrev] = useState(true);
+  const [disNext, setDisNext] = useState(false);
 
-  // useEffect(() => {
-  //   dispatch(getListMovies());
-  // }, [movies]);
+  // const [movies, setMovies] = useState(moviesArr.films);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getListMovies());
+  }, []);
+  useEffect(() => {
+    if (currPage < pagesCount) {
+      setDisNext(false);
+    } else {
+      setDisNext(true);
+    }
+    if (currPage > 1) {
+      setDisPrev(false);
+    } else {
+      setDisPrev(true);
+    }
+  }, [currPage, pagesCount]);
 
-  const handleClick = () => {};
+  const handleClickNext = () => {
+    dispatch(getListMovies(currPage + 1));
+  };
+  const handleClickPrev = () => {
+    dispatch(getListMovies(currPage - 1));
+  };
 
-  // if (isLoadingMovies) return <Loader />;
-  // if (serverError) return <ErrorComponent message={serverError} />;
+  if (isLoadingMovies) return <Loader />;
+  if (serverError) return <ErrorComponent message={serverError} />;
   return (
     <>
-      <h1>{header}</h1>
+      <h2>{header}</h2>
       <div className={styles.movies}>
         {movies.map((movie) => (
           <MovieCard key={movie.filmId} movie={movie} />
         ))}
       </div>
-      <button onClick={handleClick}>Next</button>
+      <div className={styles.btnsBlock}>
+        <button
+          disabled={disPrev}
+          className={styles.btn}
+          onClick={handleClickPrev}
+        >
+          <div className={styles.arrowLeft} />
+        </button>
+        <p>
+          {currPage} из {pagesCount}
+        </p>
+        <button
+          disabled={disNext}
+          className={styles.btn}
+          onClick={handleClickNext}
+        >
+          <div className={styles.arrowRight} />
+        </button>
+      </div>
     </>
   );
 };

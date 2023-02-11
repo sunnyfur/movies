@@ -23,12 +23,13 @@ const MovieCard = ({ movie }) => {
         <h3>{movie.nameRu}</h3>
         <p>{movie.year}</p>
         <p>{movie.shortDescription}</p>
+        <p>{movie.genres.map((genre) => genre.genre).join(", ")}</p>
       </div>
       <span
         className={styles.movieRating}
-        style={{ backgroundColor: getColor(movie.ratingKinopoisk) }}
+        style={{ backgroundColor: getColor(movie.rating) }}
       >
-        {movie.ratingKinopoisk}
+        {movie.rating}
       </span>
     </div>
   );

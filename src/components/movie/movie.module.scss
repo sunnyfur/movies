@@ -1,0 +1,20 @@
+@import "../../App/vars";
+
+.movie {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 45% 1fr;
+
+  @media (max-width: $tablet) {
+    grid-template-columns: 30% 1fr;
+  }
+  @media (max-width: $mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.movieImg {
+  width: 100%;
+  align-self: center;
+  object-fit: cover;
+}

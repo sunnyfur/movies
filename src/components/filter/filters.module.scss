@@ -1,0 +1,35 @@
+@import "../../App/colors";
+@import "../../App/vars";
+
+.form {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin input {
+  color: $text-color;
+  border-radius: $border-radius-sm;
+  border: none;
+  padding: 0.5rem;
+  min-width: 7rem;
+}
+.select {
+  background-color: rgba($card-color, 0.5);
+  @include input();
+  .option {
+    background: rgba($card-color, 0.5);
+    padding: 0.5rem;
+  }
+}
+
+.input {
+  @include input();
+}
+.btn {
+  background-color: $acent-color;
+
+  cursor: pointer;
+  @include input();
+}

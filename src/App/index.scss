@@ -8,7 +8,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: $bg-color;
   color: $text-color;
-  padding: 3rem 0;
 }
 
 input {
@@ -19,4 +18,17 @@ input {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+a {
+  transition: 0.5s ease-in-out;
+  color: rgba($text-color, 0.5);
+  font-size: large;
+  text-decoration: none;
+  &:hover {
+    color: $text-color;
+  }
+}
+* {
+  box-sizing: border-box;
 }

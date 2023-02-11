@@ -5,14 +5,17 @@
   gap: 2rem;
 
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   @media screen and (max-width: $desktop) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
   @media screen and (max-width: $tablet) {
     grid-template-columns: repeat(2, 1fr);
   }
   @media screen and (max-width: $mobile) {
+    grid-template-columns: 1fr;
+  }
+  @media screen and (max-width: $small-mobile) {
     grid-template-columns: 1fr;
   }
 }
@@ -26,7 +29,7 @@
       filter: brightness(70%);
     }
     .movieDescription {
-      transform: translateY(-70%);
+      transform: translateY(-100%);
     }
   }
 }
@@ -38,15 +41,16 @@
   z-index: 0;
 }
 .movieDescription {
+  box-sizing: border-box;
   position: absolute;
   z-index: 2;
-  bottom: -80%;
+  bottom: -100%;
   width: 100%;
   height: 100%;
   background-color: rgba($card-color, 0.8);
   transition: 1s ease-in-out;
   transform: translateY(0);
-  padding: 1rem;
+  padding: 0.5rem;
 }
 .movieRating {
   position: absolute;
@@ -56,4 +60,37 @@
   z-index: 2;
   padding: 2px 5px;
   background-color: $card-color;
+}
+
+.btnsBlock {
+  display: flex;
+}
+
+.btn {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  transition: 0.5s ease-in-out;
+  &:hover:enabled {
+    .arrowLeft {
+      filter: invert(100%);
+      transform: scale(1.2);
+    }
+    .arrowRight {
+      filter: invert(100%);
+      transform: scale(-1.2);
+    }
+  }
+}
+.arrowLeft,
+.arrowRight {
+  width: 3rem;
+  height: 3rem;
+  background-image: url("../../../public/nav_arrow_left_icon.svg");
+  background-size: cover;
+
+  filter: invert(80%);
+}
+.arrowRight {
+  transform: scaleX(-1);
 }
