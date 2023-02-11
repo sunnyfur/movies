@@ -39,31 +39,37 @@ const MoviesList = () => {
   return (
     <>
       <h2>{header}</h2>
-      <div className={styles.movies}>
-        {movies.map((movie) => (
-          <MovieCard key={movie.filmId} movie={movie} />
-        ))}
-      </div>
-      {pagesCount > 0 && (
-        <div className={styles.btnsBlock}>
-          <button
-            disabled={disPrev}
-            className={styles.btn}
-            onClick={handleClickPrev}
-          >
-            <div className={styles.arrowLeft} />
-          </button>
-          <p>
-            {currPage} из {pagesCount}
-          </p>
-          <button
-            disabled={disNext}
-            className={styles.btn}
-            onClick={handleClickNext}
-          >
-            <div className={styles.arrowRight} />
-          </button>
-        </div>
+      {movies.length === 0 ? (
+        <p>По вашему запросу ничего не найдено</p>
+      ) : (
+        <>
+          <div className={styles.movies}>
+            {movies.map((movie) => (
+              <MovieCard key={movie.filmId} movie={movie} />
+            ))}
+          </div>
+          {pagesCount > 0 && (
+            <div className={styles.btnsBlock}>
+              <button
+                disabled={disPrev}
+                className={styles.btn}
+                onClick={handleClickPrev}
+              >
+                <div className={styles.arrowLeft} />
+              </button>
+              <p>
+                {currPage} из {pagesCount}
+              </p>
+              <button
+                disabled={disNext}
+                className={styles.btn}
+                onClick={handleClickNext}
+              >
+                <div className={styles.arrowRight} />
+              </button>
+            </div>
+          )}
+        </>
       )}
     </>
   );
