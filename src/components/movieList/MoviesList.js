@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getListMovies } from "../../api/moviesApi";
+import { getListMovies, nextPage, prevPage } from "../../api/moviesApi";
 import ErrorComponent from "../error/ErrorComponent";
 import Loader from "../loader/Loader";
 
@@ -12,12 +12,8 @@ const MoviesList = () => {
     useSelector((state) => state.movies);
   const [disPrev, setDisPrev] = useState(true);
   const [disNext, setDisNext] = useState(false);
-
-  // const [movies, setMovies] = useState(moviesArr.films);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getListMovies());
-  }, []);
+
   useEffect(() => {
     if (currPage < pagesCount) {
       setDisNext(false);
@@ -32,10 +28,10 @@ const MoviesList = () => {
   }, [currPage, pagesCount]);
 
   const handleClickNext = () => {
-    dispatch(getListMovies(currPage + 1));
+    dispatch(nextPage());
   };
   const handleClickPrev = () => {
-    dispatch(getListMovies(currPage - 1));
+    dispatch(prevPage());
   };
 
   if (isLoadingMovies) return <Loader />;
@@ -48,25 +44,27 @@ const MoviesList = () => {
           <MovieCard key={movie.filmId} movie={movie} />
         ))}
       </div>
-      <div className={styles.btnsBlock}>
-        <button
-          disabled={disPrev}
-          className={styles.btn}
-          onClick={handleClickPrev}
-        >
-          <div className={styles.arrowLeft} />
-        </button>
-        <p>
-          {currPage} из {pagesCount}
-        </p>
-        <button
-          disabled={disNext}
-          className={styles.btn}
-          onClick={handleClickNext}
-        >
-          <div className={styles.arrowRight} />
-        </button>
-      </div>
+      {pagesCount > 0 && (
+        <div className={styles.btnsBlock}>
+          <button
+            disabled={disPrev}
+            className={styles.btn}
+            onClick={handleClickPrev}
+          >
+            <div className={styles.arrowLeft} />
+          </button>
+          <p>
+            {currPage} из {pagesCount}
+          </p>
+          <button
+            disabled={disNext}
+            className={styles.btn}
+            onClick={handleClickNext}
+          >
+            <div className={styles.arrowRight} />
+          </button>
+        </div>
+      )}
     </>
   );
 };

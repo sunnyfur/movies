@@ -1,0 +1,141 @@
+{
+  "total": 5,
+  "totalPages": 1,
+  "items": [
+    {
+      "kinopoiskId": 742913,
+      "imdbId": "tt0920548",
+      "nameRu": "Наши лучшие",
+      "nameEn": null,
+      "nameOriginal": "Unsere Besten",
+      "countries": [
+        {
+          "country": "Германия"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "ток-шоу"
+        }
+      ],
+      "ratingKinopoisk": null,
+      "ratingImdb": 4.3,
+      "year": 2003,
+      "type": "TV_SHOW",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/742913.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/742913.jpg"
+    },
+    {
+      "kinopoiskId": 891621,
+      "imdbId": "tt2882382",
+      "nameRu": null,
+      "nameEn": null,
+      "nameOriginal": "Gerçek Kesit",
+      "countries": [
+        {
+          "country": "Турция"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "триллер"
+        },
+        {
+          "genre": "криминал"
+        },
+        {
+          "genre": "боевик"
+        },
+        {
+          "genre": "фэнтези"
+        },
+        {
+          "genre": "реальное ТВ"
+        }
+      ],
+      "ratingKinopoisk": null,
+      "ratingImdb": 8,
+      "year": 1993,
+      "type": "TV_SHOW",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/891621.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/891621.jpg"
+    },
+    {
+      "kinopoiskId": 1366144,
+      "imdbId": null,
+      "nameRu": null,
+      "nameEn": null,
+      "nameOriginal": "The Co-Optional Podcast",
+      "countries": [
+        {
+          "country": "США"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "комедия"
+        },
+        {
+          "genre": "новости"
+        },
+        {
+          "genre": "ток-шоу"
+        }
+      ],
+      "ratingKinopoisk": null,
+      "ratingImdb": 8.1,
+      "year": 2013,
+      "type": "TV_SHOW",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/1366144.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/1366144.jpg"
+    },
+    {
+      "kinopoiskId": 4555648,
+      "imdbId": "tt9454974",
+      "nameRu": "Рыцарский поединок",
+      "nameEn": null,
+      "nameOriginal": "Knight Fight",
+      "countries": [],
+      "genres": [
+        {
+          "genre": "реальное ТВ"
+        }
+      ],
+      "ratingKinopoisk": null,
+      "ratingImdb": 6.9,
+      "year": 2019,
+      "type": "TV_SHOW",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/4555648.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/4555648.jpg"
+    },
+    {
+      "kinopoiskId": 4753869,
+      "imdbId": null,
+      "nameRu": null,
+      "nameEn": null,
+      "nameOriginal": "Escaping Denver",
+      "countries": [
+        {
+          "country": "Канада"
+        },
+        {
+          "country": "Аргентина"
+        }
+      ],
+      "genres": [
+        {
+          "genre": "фантастика"
+        },
+        {
+          "genre": "ток-шоу"
+        }
+      ],
+      "ratingKinopoisk": null,
+      "ratingImdb": null,
+      "year": 2021,
+      "type": "TV_SHOW",
+      "posterUrl": "https://kinopoiskapiunofficial.tech/images/posters/kp/4753869.jpg",
+      "posterUrlPreview": "https://kinopoiskapiunofficial.tech/images/posters/kp_small/4753869.jpg"
+    }
+  ]
+}
