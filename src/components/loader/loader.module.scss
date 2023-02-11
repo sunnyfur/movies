@@ -19,7 +19,7 @@
 
     &:first-child {
       background: $acent-color;
-      animation: effectAnim 1.5s infinite ease-in-out;
+      animation: effectAnim 2s 1s infinite ease-in-out;
     }
 
     &:nth-child(2) {
