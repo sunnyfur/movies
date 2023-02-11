@@ -5,7 +5,7 @@ import styles from "./movieList.module.scss";
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
   const handleMovieClick = (event) => {
-    navigate(`/films/${event.currentTarget.dataset.id}`);
+    navigate(`/movies/films/${event.currentTarget.dataset.id}`);
   };
 
   return (

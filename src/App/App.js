@@ -11,8 +11,8 @@ function App() {
       <div className={styles.containerContent}>
         <BrowserRouter>
           <Routes>
-            <Route index path="/" element={<MainPage />} />
-            <Route path="/films/:id" element={<MoviePage />} />
+            <Route index path="/movies" element={<MainPage />} />
+            <Route path="/movies/films/:id" element={<MoviePage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

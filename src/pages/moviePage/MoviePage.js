@@ -5,7 +5,7 @@ import styles from "./moviePage.module.scss";
 const MoviePage = () => {
   return (
     <section className={styles.moviePage}>
-      <Link to={`/`}>На главную</Link>
+      <Link to={`/movies`}>На главную</Link>
       <Movie />
     </section>
   );
